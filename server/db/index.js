@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose
-    .connect('mongodb://127.0.0.1:27017/items', { useNewUrlParser: true })
+    .connect('mongodb+srv://dbadmin:HackW0lf2021@cluster0.cvcx6.mongodb.net/cscl', { useNewUrlParser: true, useUnifiedTopology: true })
     .catch(e => {
         console.error('Connection error', e.message);
     });
