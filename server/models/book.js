@@ -10,13 +10,13 @@ var BookSchema = new Schema(
     isbn: {type: String, required: true},
     title: {type: String, required: true},
     author: {type: String, required: true},
-    publication_year: {type: Number, required: true},
-    publisher: {type: String, required: true},
-    image_url_s: {type: String, required: true},
-    image_url_m: {type: String, required: true},
-    image_url_l: {type: String, required: true},
-    copies: {type: Number, required: true},
-    available: {type: Number, required: true}
+    publication_year: {type: Number, required: false},
+    publisher: {type: String, required: false},
+    image_url_s: {type: String, required: false},
+    image_url_m: {type: String, required: false},
+    image_url_l: {type: String, required: false},
+    copies: {type: Number, required: false},
+    available: {type: Number, required: false}
   },{
     versionKey: false // When creating a new book, don't create a revision key (__v)
 });

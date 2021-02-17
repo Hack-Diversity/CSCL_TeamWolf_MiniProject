@@ -21,7 +21,7 @@ exports.book_list = function(req, res, next) {
         
         // sort() the books in alphabetical order and return as JSON file
         list_books.sort(function(a, b) {let textA = a.title.toUpperCase(); let textB = b.title.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
-        res.json({all_books: list_books});
+        res.json(list_books);
         
         // Render book_list.pug. For testing purposes
         //res.render('book_list', { title: 'Book List', book_list: list_books });

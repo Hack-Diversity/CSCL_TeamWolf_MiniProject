@@ -6,7 +6,7 @@ var logger = require('morgan');
 //Import the mongoose module
 var mongoose = require('mongoose');
 var app = express();
-
+var cors = require('cors');
 // import MongoDB folder
 const db = require('./db');
 // Connect to DB
@@ -17,6 +17,7 @@ var indexRouter = require('./routes/index');
 var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
 var adminRouter = require('./routes/admin');  //Import routes for "admin" area of site
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
