@@ -1,28 +1,27 @@
-import https from 'https';
-import axios from 'axios';
+import axios from 'axios'
 
 const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3000/api',
-    hostname: process.env.REEACT_APP_API_HOST || 'http://localhost:3000/',
-    httpsAgent: https.Agent({
-        rejectUnauthorized: false,
-    }),
-});
+    baseURL: 'http://localhost:3000/',
+})
 
-// TODO - use interceptors for better error handling: https://masteringjs.io/tutorials/axios/interceptors#error-handling
-
-export const getAllItems = payload => api.get(`/items`, payload);
-export const getItemById = id => api.get(`/item/${id}`);
-export const insertItem = payload => api.post(`/item`, payload);
-export const updateItemById = (id, payload) => api.put(`/item/${id}`, payload);
-export const deleteItemById = id => api.delete(`/item/${id}`);
+export const addBook = payload => api.post(`/admin/book/create`, payload)
+export const getAllBooks = () => api.get(`/catalog/books`)
+export const updateBookStock = (id, payload) => api.post(`/admin/book/${id}/updateStock`, payload)
+export const updateBookAvailable = (id, payload) => api.post(`/admin/book/${id}/updateAvailable`, payload)
+export const deleteBook = id => api.delete(`/admin/book/${id}/delete`)
+export const borrowBook = id => api.post(`/catalog/book/${id}/borrow`)
+export const returnBook = id => api.post(`/catalog/book/${id}/return`)
+export const getBook = id => api.get(`/catalog/book/${id}`)
 
 const apis = {
-    getAllItems,
-    getItemById,
-    insertItem,
-    updateItemById,
-    deleteItemById,
-};
+    addBook,
+    getAllBooks,
+    updateBookStock,
+    updateBookAvailable,
+    deleteBook,
+    getBook,
+    borrowBook,
+    returnBook,
+}
 
-export default apis;
+export default apis

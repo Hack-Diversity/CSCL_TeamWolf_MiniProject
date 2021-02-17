@@ -1,11 +1,8 @@
-import ItemInsert from './ItemInsert';
-import ItemsList from './ItemsList';
-import ItemsTable from './ItemsTable';
-import ItemUpdate from './ItemUpdate';
+import AdminDashboard from './AdminDashboard'
+import UserBooksList from './UserBooksList'
+import BookInfo from './BookInfo'
+import CreateBook from './CreateBook'
+import UpdateBookStock from './UpdateBookStock'
+import UpdateBookAvailable from './UpdateBookAvailable'
 
-export {
-    ItemInsert,
-    ItemsList,
-    ItemsTable,
-    ItemUpdate
-};
+export { AdminDashboard, CreateBook, UpdateBookStock, UpdateBookAvailable, BookInfo, UserBooksList}
