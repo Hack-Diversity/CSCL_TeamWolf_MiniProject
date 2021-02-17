@@ -68,6 +68,11 @@ class CreateBook extends Component {
         this.setState({ isbn })
     }
 
+    handleChangeInputPublisher = async event => {
+        const publisher = event.target.value
+        this.setState({ publisher })
+    }
+
     handleAddBook = async () => {
         const { title, author, isbn } = this.state
         const payload = { title, author, isbn}
@@ -83,7 +88,7 @@ class CreateBook extends Component {
     }
 
     render() {
-        const { title, author, isbn } = this.state
+        const { title, author, isbn, publisher } = this.state
         return (
             <Wrapper>
                 <Title>Create Book</Title>
@@ -107,6 +112,13 @@ class CreateBook extends Component {
                     type="text"
                     value={isbn}
                     onChange={this.handleChangeInputISBN}
+                />
+
+                <Label>Publisher: </Label>
+                <InputText
+                    type="text"
+                    value={publisher}
+                    onChange={this.handleChangeInputPublisher}
                 />
 
                 <Button onClick={this.handleAddBook}>Add Book</Button>
