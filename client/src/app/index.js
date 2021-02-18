@@ -5,6 +5,7 @@ import { NavBar } from '../components'
 import { AdminDashboard, CreateBook, UpdateBookStock, UpdateBookAvailable, BookInfo, UserBooksList} from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import '../styles/index.css'
 
 function App() {
     return (

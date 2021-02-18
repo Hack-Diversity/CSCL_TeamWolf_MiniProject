@@ -9,6 +9,11 @@ import 'react-table/react-table.css'
 const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
 `
+const Button = styled.button.attrs({
+    className: `btn btn-primary`,
+})`
+    margin: 15px 15px 15px 5px;
+`
 
 class BorrowBook extends Component {
     updateBook = event => {
@@ -48,7 +53,6 @@ class BookInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
             title: '',
             isbn: '',
             author: '',
@@ -59,15 +63,14 @@ class BookInfo extends Component {
             available: '',
             
         }
-        console.log(this.props)
     }
 
     
     componentDidMount = async () => {
-        const id = this.props.match.params._id;
+        const id = this.props.match.params.id;
         await api.getBook(id).then(book => {
             this.setState({
-                title: this.book.data.title,
+                title: book.data.title,
                 isbn: book.data.isbn,
                 author: book.data.author,
                 publication_year: book.data.publication_year,
@@ -79,46 +82,28 @@ class BookInfo extends Component {
             })
         })
     }
+
+    handleBorrowBook = async () => {
+        const id = this.props.match.params.id;
+
+        await api.borrowBook(id).then(res => {
+            window.alert(`Book borrowed successfully`)
+        })
+        .catch(err => window.alert(`Sorry, no available copies`))
+    }
+
+    handleReturnBook = async () => {
+        const id = this.props.match.params.id;
+
+        await api.returnBook(id).then(res => {
+            window.alert(`Book returned successfully`)
+        })
+    }
     
     render() {
         const book = this.state
-
-        const columns = [
+        const buttons = [
             {
-                Header: 'ID',
-                accessor: '_id',
-                filterable: true,
-            },
-            {
-                Header: 'Title',
-                accessor: 'title',
-                filterable: true,
-            },
-            {
-                Header: 'Author',
-                accessor: 'author',
-                filterable: true,
-            },
-            {
-                Header: 'ISBN',
-                accessor: 'isbn',
-                filterable: true,
-                
-            },
-            {
-                Header: '',
-                accessor: '',
-                Cell: function(props) {
-                    return (
-                        <span>
-                            <BorrowBook id={props.original._id} />
-                        </span>
-                    )
-                },
-            },
-            {
-                Header: '',
-                accessor: '',
                 Cell: function(props) {
                     return (
                         <span>
@@ -126,14 +111,18 @@ class BookInfo extends Component {
                         </span>
                     )
                 },
-            },
+            }
         ]
+        
 
-        console.log(book)
 
         return (
-            <p>Work to be done</p>
-            // Work to be done
+            <Wrapper>
+                <h1>Available: {book.available}</h1>
+                <Button onClick={this.handleReturnBook}>Return Book</Button>
+                <Button onClick={this.handleBorrowBook}>Borrow Book</Button>
+                
+            </Wrapper>
         )
         
     }

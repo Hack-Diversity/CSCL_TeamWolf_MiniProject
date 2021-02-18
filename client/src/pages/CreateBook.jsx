@@ -58,6 +58,11 @@ class CreateBook extends Component {
         this.setState({ title })
     }
 
+    handleChangeInputPublication_Year = async event => {
+        const publication_year = event.target.value
+        this.setState({ publication_year })
+    }
+
     handleChangeInputAuthor = async event => {
         const author = event.target.value
         this.setState({ author})
@@ -74,8 +79,8 @@ class CreateBook extends Component {
     }
 
     handleAddBook = async () => {
-        const { title, author, isbn } = this.state
-        const payload = { title, author, isbn}
+        const { title, author, isbn, publication_year } = this.state
+        const payload = { title, author, isbn, publication_year}
 
         await api.addBook(payload).then(res => {
             window.alert(`Book created successfully`)
@@ -83,12 +88,14 @@ class CreateBook extends Component {
                 title: '',
                 author: '',
                 isbn: '',
+                publication_year: '',
+                
             })
         })
     }
 
     render() {
-        const { title, author, isbn, publisher } = this.state
+        const { title, author, isbn, publisher, publication_year } = this.state
         return (
             <Wrapper>
                 <Title>Create Book</Title>
@@ -119,6 +126,13 @@ class CreateBook extends Component {
                     type="text"
                     value={publisher}
                     onChange={this.handleChangeInputPublisher}
+                />
+
+                <Label>Publication Year: </Label>
+                <InputText
+                    type="number"
+                    value={publication_year}
+                    onChange={this.handleChangeInputPublication_Year}
                 />
 
                 <Button onClick={this.handleAddBook}>Add Book</Button>

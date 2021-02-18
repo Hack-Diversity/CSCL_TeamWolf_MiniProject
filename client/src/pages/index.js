@@ -5,4 +5,4 @@ import CreateBook from './CreateBook'
 import UpdateBookStock from './UpdateBookStock'
 import UpdateBookAvailable from './UpdateBookAvailable'
 
-export { AdminDashboard, CreateBook, UpdateBookStock, UpdateBookAvailable, BookInfo, UserBooksList}
+export { AdminDashboard, CreateBook, UpdateBookStock, UpdateBookAvailable, BookInfo, UserBooksList,}

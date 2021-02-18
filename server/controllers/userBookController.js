@@ -16,7 +16,7 @@ exports.index = function(req, res) {
 // Display list of all Books.
 exports.book_list = function(req, res, next) {
     // Find's a Book's title, author and small img url
-    Book.find({}, 'title author image_url_s').exec(function (err, list_books) {
+    Book.find({}, 'title author image_url_m').exec(function (err, list_books) {
         if (err) { return next(err); }
         
         // sort() the books in alphabetical order and return as JSON file
