@@ -53,15 +53,15 @@ class UserBooksList extends Component {
             },
             {
                 Header: 'Thumbnail',
-                accesor: 'image_url_m',
+                accesor: 'image_url_s',
+            
                 Cell: props => {
                     return (
-                        <span data-item-id={props.original.image_url_m}>
-                            <img src={props.original.image_url_m} alt="Book Cover"/>
+                        <span data-item-id={props.original.image_url_s}>
+                            <img src={props.original.image_url_s} alt="Book Cover"/>
                         </span>
                     )
                   },
-                
             },
         ]
 
