@@ -10,6 +10,11 @@ import 'react-table/react-table.css'
 const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
 `
+const Button = styled.button.attrs({
+    className: `btn btn-primary`,
+})`
+    margin: 15px 15px 15px 5px;
+`
 
 class BorrowBook extends Component {
     updateBook = event => {
@@ -49,7 +54,7 @@ class BookInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title:'',
+            title: '',
             isbn: '',
             author: '',
             publication_year: '',
@@ -76,6 +81,23 @@ class BookInfo extends Component {
             })
         })
     }
+
+    handleBorrowBook = async () => {
+        const id = this.props.match.params.id;
+
+        await api.borrowBook(id).then(res => {
+            window.alert(`Book borrowed successfully`)
+        })
+        .catch(err => window.alert(`Sorry, no available copies`))
+    }
+
+    handleReturnBook = async () => {
+        const id = this.props.match.params.id;
+
+        await api.returnBook(id).then(res => {
+            window.alert(`Book returned successfully`)
+        })
+    }
     
     render() {
         const book = this.state
@@ -96,6 +118,26 @@ class BookInfo extends Component {
                 </div>
             </main>
         );
+        const buttons = [
+            {
+                Cell: function(props) {
+                    return (
+                        <span>
+                            <ReturnBook id={props.original._id} />
+                        </span>
+                    )
+                },
+            }
+        ]
+        
+        return (
+            <Wrapper>
+                <h1>Available: {book.available}</h1>
+                <Button onClick={this.handleReturnBook}>Return Book</Button>
+                <Button onClick={this.handleBorrowBook}>Borrow Book</Button>
+                
+            </Wrapper>
+        )
         
     }
 }

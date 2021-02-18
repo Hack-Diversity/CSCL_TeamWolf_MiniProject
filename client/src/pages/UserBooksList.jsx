@@ -40,6 +40,7 @@ class UserBooksList extends Component {
 
     render() {
         const { books, isLoading } = this.state
+    
         const columns = [
             {
                 Header: 'ID',
@@ -62,8 +63,14 @@ class UserBooksList extends Component {
             },
             {
                 Header: 'Thumbnail',
-                accessor: 'image_url_s',
-                filterable: true,
+                accesor: 'image_url_m',
+                Cell: props => {
+                    return (
+                        <span data-item-id={props.original.image_url_m}>
+                            <img src={props.original.image_url_m} alt="Book Cover"/>
+                        </span>
+                    )
+                  },
                 
             },
         ]
