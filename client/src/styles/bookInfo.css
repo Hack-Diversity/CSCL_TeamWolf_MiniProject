@@ -4,11 +4,22 @@
 
 .flex-container {
     display: flex;
+    justify-content:center;
+
 }
 
-.flex-container > div {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+#book-content-section {
+    margin: 0 5em 0 5em;
 }
+
+.book-details {
+    font-size: large;
+}
+
+.book-title {
+    font-size: xx-large;
+    font-family:Verdana, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
 

@@ -104,41 +104,31 @@ class BookInfo extends Component {
         console.log(book)
         
         return (
-            <main class="flex-container">
+            <main className="flex-container">
                 <div id="book-image-section">
                     <img src={book.image_url_l}/>
                 </div>
                 <div id="book-content-section">
-                    <h1 class="book-title">{book.title}</h1>
-                    <h2>{book.author}</h2>
-                    <h3 class>{book.publisher}</h3>
-                    <h3>{book.publication_year}</h3>
-                    <h3>{book.available}</h3>
-                    <h3>{book.copies}</h3>
+                    <h1 className="book-title"><span>{book.title}</span></h1>
+                    <h2 className="book-details">By: {book.author}</h2>
+                    <h3 className="book-details">Publisher: {book.publisher}</h3>
+                    <h3 className="book-details">Year of Publication: {book.publication_year}</h3>
+                    <h3 className="book-details">Number of copies: {book.copies}</h3>
+                    <h3 className="book-details">Copies available: {book.available}</h3>
+
+                    <Wrapper className="buttons-container" style={{padding: "0em"}}>
+                        <Button className="button" onClick={this.handleReturnBook}>Return Book</Button>
+                        <Button className="button" onClick={this.handleBorrowBook}>Borrow Book</Button>
+                    </Wrapper>
                 </div>
-            </main>
-        );
-        const buttons = [
-            {
-                Cell: function(props) {
-                    return (
-                        <span>
-                            <ReturnBook id={props.original._id} />
-                        </span>
-                    )
-                },
-            }
-        ]
-        
-        return (
-            <Wrapper>
-                <h1>Available: {book.available}</h1>
-                <Button onClick={this.handleReturnBook}>Return Book</Button>
-                <Button onClick={this.handleBorrowBook}>Borrow Book</Button>
+
                 
-            </Wrapper>
-        )
-        
+            </main>
+
+
+
+
+        );
     }
 }
 
