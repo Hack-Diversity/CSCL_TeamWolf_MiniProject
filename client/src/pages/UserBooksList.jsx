@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import ReactTable from 'react-table'
 import api from '../api'
@@ -64,6 +65,7 @@ class UserBooksList extends Component {
             {
                 Header: 'Thumbnail',
                 accesor: 'image_url_m',
+            
                 Cell: props => {
                     return (
                         <span data-item-id={props.original.image_url_m}>
@@ -71,9 +73,10 @@ class UserBooksList extends Component {
                         </span>
                     )
                   },
-                
             },
         ]
+
+        console.log(books);
 
         let showTable = true
         if (!books.length) {
@@ -98,3 +101,4 @@ class UserBooksList extends Component {
 }
 
 export default UserBooksList
+

@@ -121,15 +121,8 @@ class BookInfo extends Component {
                         <Button className="button" onClick={this.handleBorrowBook}>Borrow Book</Button>
                     </Wrapper>
                 </div>
-
-                
             </main>
-
-
-
-
         );
     }
 }
-
 export default BookInfo
