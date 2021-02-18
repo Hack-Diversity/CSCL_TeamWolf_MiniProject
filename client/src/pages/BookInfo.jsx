@@ -49,7 +49,7 @@ class BookInfo extends Component {
         super(props);
         this.state = {
 
-            title: '',
+            title:'',
             isbn: '',
             author: '',
             publication_year: '',
@@ -59,12 +59,11 @@ class BookInfo extends Component {
             available: '',
             
         }
-        console.log(this.props)
     }
 
     
     componentDidMount = async () => {
-        const id = this.props.match.params._id;
+        const id = this.props.match.params._id; //Undefined
         await api.getBook(id).then(book => {
             this.setState({
                 title: this.book.data.title,
@@ -132,9 +131,10 @@ class BookInfo extends Component {
         console.log(book)
 
         return (
-            <p>Work to be done</p>
-            // Work to be done
-        )
+            <>
+                <p>Work to be done</p>
+            </>
+        );
         
     }
 }

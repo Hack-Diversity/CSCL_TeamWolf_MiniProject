@@ -5,6 +5,7 @@ import api from '../api'
 import styled from 'styled-components'
 
 import 'react-table/react-table.css'
+import BookInfo from './BookInfo'
 
 const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
@@ -31,14 +32,23 @@ class UserBooksList extends Component {
         })
     }
 
+    routeChange=(id)=> {
+        let path = `/catalog/book/${id}`;
+        this.props.history.push(path);
+      }
+
+
     render() {
         const { books, isLoading } = this.state
-
         const columns = [
             {
                 Header: 'ID',
                 accessor: '_id',
                 filterable: true,
+                Cell: ({ original }) => (
+                    <a value={original._id} onClick={() => this.routeChange(original._id)} > 
+                        {original._id} 
+                    </a>)
             },
             {
                 Header: 'Title',
