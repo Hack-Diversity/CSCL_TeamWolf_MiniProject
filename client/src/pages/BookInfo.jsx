@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import api from '../api'
+import ReactTable from 'react-table'
 
 
 import styled from 'styled-components'
@@ -48,7 +49,6 @@ class BookInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
             title:'',
             isbn: '',
             author: '',
@@ -57,16 +57,14 @@ class BookInfo extends Component {
             image_url_l: '',
             copies: '',
             available: '',
-            
         }
     }
 
-    
     componentDidMount = async () => {
-        const id = this.props.match.params._id; //Undefined
+        const id = this.props.match.params.id;
         await api.getBook(id).then(book => {
             this.setState({
-                title: this.book.data.title,
+                title: book.data.title,
                 isbn: book.data.isbn,
                 author: book.data.author,
                 publication_year: book.data.publication_year,
@@ -81,58 +79,17 @@ class BookInfo extends Component {
     
     render() {
         const book = this.state
-
-        const columns = [
-            {
-                Header: 'ID',
-                accessor: '_id',
-                filterable: true,
-            },
-            {
-                Header: 'Title',
-                accessor: 'title',
-                filterable: true,
-            },
-            {
-                Header: 'Author',
-                accessor: 'author',
-                filterable: true,
-            },
-            {
-                Header: 'ISBN',
-                accessor: 'isbn',
-                filterable: true,
-                
-            },
-            {
-                Header: '',
-                accessor: '',
-                Cell: function(props) {
-                    return (
-                        <span>
-                            <BorrowBook id={props.original._id} />
-                        </span>
-                    )
-                },
-            },
-            {
-                Header: '',
-                accessor: '',
-                Cell: function(props) {
-                    return (
-                        <span>
-                            <ReturnBook id={props.original._id} />
-                        </span>
-                    )
-                },
-            },
-        ]
-
         console.log(book)
-
+        
         return (
             <>
-                <p>Work to be done</p>
+                <img src={book.image_url_l}/>
+                {book.title}
+                {book.author}
+                {book.publisher}
+                {book.publication_year}
+                {book.available}
+                {book.copies}
             </>
         );
         

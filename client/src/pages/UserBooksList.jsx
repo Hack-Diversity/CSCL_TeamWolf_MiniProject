@@ -33,8 +33,8 @@ class UserBooksList extends Component {
     }
 
     routeChange=(id)=> {
-        let path = `/catalog/book/${id}`;
-        this.props.history.push(path);
+        // let path = `/catalog/book/${id}`;
+        this.props.history.push(`/catalog/book/${id}`);
       }
 
 
@@ -48,7 +48,7 @@ class UserBooksList extends Component {
                 Cell: ({ original }) => (
                     <a value={original._id} onClick={() => this.routeChange(original._id)} > 
                         {original._id} 
-                    </a>)
+                    </a>),
             },
             {
                 Header: 'Title',
