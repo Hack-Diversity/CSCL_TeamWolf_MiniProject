@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-container > div {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+

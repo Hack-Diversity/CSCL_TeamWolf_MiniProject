@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import api from '../api'
-import ReactTable from 'react-table'
+import '../styles/bookInfo.css'
 
 
 import styled from 'styled-components'
@@ -82,15 +82,19 @@ class BookInfo extends Component {
         console.log(book)
         
         return (
-            <>
-                <img src={book.image_url_l}/>
-                {book.title}
-                {book.author}
-                {book.publisher}
-                {book.publication_year}
-                {book.available}
-                {book.copies}
-            </>
+            <main class="flex-container">
+                <div id="book-image-section">
+                    <img src={book.image_url_l}/>
+                </div>
+                <div id="book-content-section">
+                    <h1 class="book-title">{book.title}</h1>
+                    <h2>{book.author}</h2>
+                    <h3 class>{book.publisher}</h3>
+                    <h3>{book.publication_year}</h3>
+                    <h3>{book.available}</h3>
+                    <h3>{book.copies}</h3>
+                </div>
+            </main>
         );
         
     }
