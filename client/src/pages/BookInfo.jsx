@@ -106,6 +106,11 @@ class BookInfo extends Component {
                 
             },
             {
+                Header: 'Image',
+                accessor: 'image_url_l', 
+                filterable: true,
+            },
+            {
                 Header: '',
                 accessor: '',
                 Cell: function(props) {
