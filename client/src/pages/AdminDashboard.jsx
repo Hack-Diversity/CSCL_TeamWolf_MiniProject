@@ -141,6 +141,16 @@ class AdminDashboard extends Component {
                     )
                 },
             },
+            {
+                accesor: 'image_url_s',
+                Cell: props => {
+                    return (
+                        <span data-item-id={props.original.image_url_s}>
+                            <img src={props.original.image_url_s} alt="Book Cover"/>
+                        </span>
+                    )
+                  },
+            }
         ]
 
         let showTable = true

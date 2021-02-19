@@ -1,28 +1,44 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import api from '../api'
 
 import styled from 'styled-components'
-import pic from './back.jpg';
+import pic from './back.jpg'
+import App from '../app'
+
+
 const Title = styled.h1.attrs({
     className: 'h1',
 })``
-const Img = styled.div.attrs({
-    className: 'img',
-})`
-    margin: 0 30px;
+
+
+const Wrapper = styled.div`
+    padding: 0 40px 40px 40px;
 `
 
-const Content = styled.div`
+
+const  customStyle = {
+    color: "gary",
+    width: "800px",
+    textAlign: "auto",
+    float: "right",
+    paddingRight:"110px",
+    margin:"auto",
+   
+}
+const bgd = {
+    width : "600px",
+    height :"400px",
+    paddingLeft:"160px"
+}
+
+const dv ={
+    width: "100%",
+    margin:"auto",
     
-    background-image: url(${pic});
-    width: 100%;
-    height: 785px;
-`
-const Wrapper = styled.div.attrs({
-    className: 'form-group',
-})`
-    margin: 0 30px;
-`
+}
+
+  
 
 class CreateBook extends Component {
     constructor(props) {
@@ -79,9 +95,22 @@ class CreateBook extends Component {
     render() {
         const { title, author, isbn, publisher } = this.state
         return (
-            <Content></Content>
+            <div style = {dv}>
+            <p style = {customStyle}>
+    <Title>The CSCL coffee shop</Title>
+        The CSCL coffeshop is created by team Wold (Hack.Diversity). 
+        Our main product of the store will be coffee and books. We have thousands of books to pick from
+        so come to our local coffeshop and enjoy reading your favorite books. 
+
+        </p>
+        { 
+        <img style = {bgd} src = {pic}/>
+     }
+        </div>
         )
     }
 }
 
-export default CreateBook
+
+
+export default CreateBook;
