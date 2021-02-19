@@ -59,5 +59,5 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 
 Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except eject will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-## Data Anaylitics
+## Data Analytics
 The folder dataAnalysis contains a Powerpoint presentation about trends in the books, an Excel spreadsheet of recommended books, and the R script that was used for statistical analysis and graphing purposes.
