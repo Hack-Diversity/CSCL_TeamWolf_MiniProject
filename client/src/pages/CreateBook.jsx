@@ -49,18 +49,13 @@ class CreateBook extends Component {
             image_url_m: '',
             image_url_l: '',
             copies: '',
-            available: '',
+            available: ''
         }
     }
 
     handleChangeInputTitle = async event => {
         const title = event.target.value
         this.setState({ title })
-    }
-
-    handleChangeInputPublication_Year = async event => {
-        const publication_year = event.target.value
-        this.setState({ publication_year })
     }
 
     handleChangeInputAuthor = async event => {
@@ -78,9 +73,39 @@ class CreateBook extends Component {
         this.setState({ publisher })
     }
 
+    handleChangeInputPublicationYear = async event => {
+        const publication_year = event.target.value
+        this.setState({ publication_year })
+    }
+
+    handleChangeInputSmallImageURL = async event => {
+        const image_url_s = event.target.value
+        this.setState({ image_url_s })
+    }
+
+    handleChangeInputMediumImageURL = async event => {
+        const image_url_m = event.target.value
+        this.setState({ image_url_m })
+    }
+
+    handleChangeInputLargeImageURL = async event => {
+        const image_url_l = event.target.value
+        this.setState({ image_url_l })
+    }
+
+    handleChangeInputCopies = async event => {
+        const copies = event.target.value
+        this.setState({ copies })
+    }
+
+    handleChangeInputAvailable = async event => {
+        const available = event.target.value
+        this.setState({ available })
+    }
+
     handleAddBook = async () => {
-        const { title, author, isbn, publication_year } = this.state
-        const payload = { title, author, isbn, publication_year}
+        const { title, author, isbn, publisher, publication_year, image_url_s, image_url_m, image_url_l, copies, available } = this.state
+        const payload = { title, author, isbn, publisher, publication_year, image_url_s, image_url_m, image_url_l, copies, available}
 
         await api.addBook(payload).then(res => {
             window.alert(`Book created successfully`)
@@ -88,14 +113,19 @@ class CreateBook extends Component {
                 title: '',
                 author: '',
                 isbn: '',
+                publisher: '',
                 publication_year: '',
-                
+                image_url_s: '',
+                image_url_m: '',
+                image_url_l: '',
+                copies: '',
+                available: '',
             })
         })
     }
 
     render() {
-        const { title, author, isbn, publisher, publication_year } = this.state
+        const { title, author, isbn, publisher, publication_year, image_url_s, image_url_m, image_url_l, copies, available } = this.state
         return (
             <Wrapper>
                 <Title>Create Book</Title>
@@ -132,7 +162,42 @@ class CreateBook extends Component {
                 <InputText
                     type="number"
                     value={publication_year}
-                    onChange={this.handleChangeInputPublication_Year}
+                    onChange={this.handleChangeInputPublicationYear}
+                />
+
+                <Label>Small Image URL: </Label>
+                <InputText
+                    type="text"
+                    value={image_url_s}
+                    onChange={this.handleChangeInputSmallImageURL}
+                />
+
+            <Label>Medium Image URL: </Label>
+                <InputText
+                    type="text"
+                    value={image_url_m}
+                    onChange={this.handleChangeInputMediumImageURL}
+                />
+
+            <Label>Large Image URL: </Label>
+                <InputText
+                    type="text"
+                    value={image_url_l}
+                    onChange={this.handleChangeInputLargeImageURL}
+                />
+
+            <Label>Copies: </Label>
+                <InputText
+                    type="text"
+                    value={copies}
+                    onChange={this.handleChangeInputCopies}
+                />
+
+            <Label>Available: </Label>
+                <InputText
+                    type="text"
+                    value={available}
+                    onChange={this.handleChangeInputAvailable}
                 />
 
                 <Button onClick={this.handleAddBook}>Add Book</Button>

@@ -3,7 +3,6 @@ import ReactTable from 'react-table'
 import api from '../api'
 
 import styled from 'styled-components'
-
 import 'react-table/react-table.css'
 
 const Wrapper = styled.div`
@@ -31,36 +30,55 @@ class UserBooksList extends Component {
         })
     }
 
+    routeChange=(id)=> {
+        let path = `/catalog/book/${id}`;
+        this.props.history.push(path);
+      }
+
     render() {
         const { books, isLoading } = this.state
     
         const columns = [
             {
-                Header: 'ID',
-                accessor: '_id',
-                filterable: true,
+                Header: 'Thumbnail',
+                accesor: 'image_url_m',
+                Cell: props => {
+                    return ( 
+                        <div style={{ textAlign: "center" }}>
+                        <a value={props.original._id} onClick={() => this.routeChange(props.original._id)} >
+                        <span data-item-id={props.original.image_url_m}>
+                            <img src={props.original.image_url_m} alt="Book Cover"/>
+                        </span>
+                        </a>
+                        </div>
+                    )
+                  },
+                  
+                
             },
             {
                 Header: 'Title',
                 accessor: 'title',
                 filterable: true,
+                Cell: props => {
+                    return ( 
+                        <div style={{ textAlign: "center" }}>
+                            {props.original.title}
+                        </div>
+                    )
+                  },
             },
             {
                 Header: 'Author',
                 accessor: 'author',
                 filterable: true,
-            },
-            {
-                Header: 'Thumbnail',
-                accesor: 'image_url_m',
                 Cell: props => {
-                    return (
-                        <span data-item-id={props.original.image_url_m}>
-                            <img src={props.original.image_url_m} alt="Book Cover"/>
-                        </span>
+                    return ( 
+                        <div style={{ textAlign: "center" }}>
+                            {props.original.author}
+                        </div>
                     )
                   },
-                
             },
         ]
 

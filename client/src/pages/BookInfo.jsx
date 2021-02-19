@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import api from '../api'
+import api, { updateBookStock } from '../api'
 
 
 import styled from 'styled-components'
-
 import 'react-table/react-table.css'
 
 const Wrapper = styled.div`
@@ -118,10 +117,20 @@ class BookInfo extends Component {
 
         return (
             <Wrapper>
-                <h1>Available: {book.available}</h1>
+                <div style={{ textAlign: "center" }} id="book-image-section">
+                    <img src={book.image_url_l}/>
+                </div>
+                <div style={{ textAlign: "center" }} id="book-content-section">
+                    <h1 class="book-title">Title: {book.title}</h1>
+                    <h2>Author: {book.author}</h2>
+                    <h3 class>Publisher: {book.publisher}</h3>
+                    <h3>Publication year: {book.publication_year}</h3>
+                    <h3>Available: {book.available}</h3>
+                    <h3>Copies: {book.copies}</h3>
+                
                 <Button onClick={this.handleReturnBook}>Return Book</Button>
                 <Button onClick={this.handleBorrowBook}>Borrow Book</Button>
-                
+                </div>
             </Wrapper>
         )
         
