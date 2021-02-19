@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import { NavBar } from '../components'
-import { AdminDashboard, CreateBook, UpdateBookStock, UpdateBookAvailable, BookInfo, UserBooksList, HomePage} from '../pages'
+import { AdminDashboard, CreateBook, UpdateBookStock, UpdateBookAvailable, BookInfo, UserBooksList, HomePage,} from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/index.css'
@@ -27,6 +27,7 @@ function App() {
                     exact
                     component={UpdateBookAvailable}
                 />
+                <Route path='*' exact component={HomePage} />
             </Switch>
         </Router>
     )

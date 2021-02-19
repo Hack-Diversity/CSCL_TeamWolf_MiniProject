@@ -45,7 +45,7 @@ class UserBooksList extends Component {
                 Cell: props => {
                     return ( 
                         <div style={{ textAlign: "center" }}>
-                        <a value={props.original._id} onClick={() => this.routeChange(props.original._id)} >
+                        <a href={'/catalog/book/' + props.original._id} >
                         <span data-item-id={props.original.image_url_m}>
                             <img src={props.original.image_url_m} alt="Book Cover"/>
                         </span>

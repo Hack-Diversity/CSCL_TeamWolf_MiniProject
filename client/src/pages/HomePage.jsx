@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import pic from '../homepage.jpg'
-import styled from 'styled-components'
 
 const bgd = {
     width : "600px",

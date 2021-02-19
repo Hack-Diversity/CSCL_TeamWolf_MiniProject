@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import api, { updateBookStock } from '../api'
-
-
+import api from '../api'
 import styled from 'styled-components'
 import 'react-table/react-table.css'
 
@@ -13,40 +11,6 @@ const Button = styled.button.attrs({
 })`
     margin: 15px 15px 15px 5px;
 `
-
-class BorrowBook extends Component {
-    updateBook = event => {
-        if (
-            window.confirm(
-                `Do you want to borrow ${this.props.title}?`,
-            )
-        ) {
-            api.borrowBook(this.props.id)
-            window.location.reload()
-        }
-    }
-
-    render() {
-        return <BorrowBook onClick={this.updateBook}>Borrow</BorrowBook>
-    }
-}
-
-class ReturnBook extends Component {
-    updateBook = event => {
-        if (
-            window.confirm(
-                `Do you want to return ${this.props.title}?`,
-            )
-        ) {
-            api.returnBook(this.props.id)
-            window.location.reload()
-        }
-    }
-
-    render() {
-        return <ReturnBook onClick={this.updateBook}>Return</ReturnBook>
-    }
-}
 
 class BookInfo extends Component {
     constructor(props) {
@@ -87,6 +51,7 @@ class BookInfo extends Component {
 
         await api.borrowBook(id).then(res => {
             window.alert(`Book borrowed successfully`)
+            window.location.reload()
         })
         .catch(err => window.alert(`Sorry, no available copies`))
     }
@@ -96,29 +61,16 @@ class BookInfo extends Component {
 
         await api.returnBook(id).then(res => {
             window.alert(`Book returned successfully`)
+            window.location.reload()
         })
     }
     
     render() {
         const book = this.state
-        const buttons = [
-            {
-                Cell: function(props) {
-                    return (
-                        <span>
-                            <ReturnBook id={props.original._id} />
-                        </span>
-                    )
-                },
-            }
-        ]
-        
-
-
         return (
             <Wrapper>
                 <div style={{ textAlign: "center" }} id="book-image-section">
-                    <img src={book.image_url_l}/>
+                    <img src={book.image_url_l} alt="Book Cover"/>
                 </div>
                 <div style={{ textAlign: "center" }} id="book-content-section">
                     <h1 class="book-title">Title: {book.title}</h1>
