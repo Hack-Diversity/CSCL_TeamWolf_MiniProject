@@ -141,6 +141,23 @@ class AdminDashboard extends Component {
                     )
                 },
             },
+            {
+                Header: 'Thumbnail',
+                accesor: 'image_url_m',
+                Cell: props => {
+                    return ( 
+                        <div style={{ textAlign: "center" }}>
+                        <a href={'/catalog/book/' + props.original._id} >
+                        <span data-item-id={props.original.image_url_m}>
+                            <img src={props.original.image_url_m} alt="Book Cover"/>
+                        </span>
+                        </a>
+                        </div>
+                    )
+                  },
+                  
+                
+            },
         ]
 
         let showTable = true
