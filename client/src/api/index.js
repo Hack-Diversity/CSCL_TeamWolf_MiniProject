@@ -1,8 +1,12 @@
+import https from 'https'
 import axios from 'axios'
 
 const api = axios.create({
     baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3000/',
     hostname: process.env.REACT_APP_API_HOST || 'http://localhost:3000/',
+    httpsAgent: https.Agent({
+        rejectUnauthorized: false,
+    }),
 });
 
 export const addBook = payload => api.post(`/admin/book/create`, payload)
